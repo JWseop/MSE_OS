@@ -1,10 +1,3 @@
-//
-//  func.c
-//  ㅇㅇ
-//
-//  Created by 정우섭 on 2022/10/10.
-//
-
 #include "func.h"
 
 int child_process(int x, int y, int interval){
@@ -32,28 +25,35 @@ void parent_process(int child_process_result){
     if(child_process_result==2) printf("Parent says that it is greater than 1000.\n");
 }
 
-int Input_Error_identifier(int argc, int value[]){
+int Input_Error_identifier(int argc,char* argv[]){
     // 입력받은 매개변수 개수가 4개가 아니면 에러문구 출력.(실행파일명, x, y, interval)
     if(argc!=4){
-        printf("[usage]: ./oshw1 x y interval\n");
+        printf("[usage]: %s x y interval\n",argv[0]);
         printf("[condition]: x,y, and interval are positive integers.\n");
         return -1;
     }
-    
+    return 0;
+}
+
+int Input_Error_identifier2(int value[]){
+    // 에러 발생여부 확인 변수
+    int error_check=0;
     // 입력받은 매개변수 개수가 양수가 아니면 에러문구 출력.
     if(value[0]<=0){
         printf("x is not a positive integer.\n");
-        return -2;
+        error_check++;
     }
     if(value[1]<=0){
         printf("y is not a positive integer.\n");
-        return -2;
+        error_check++;
     }
     if(value[2]<=0){
         printf("interval is not a positive integer.\n");
-        return -2;
+        error_check++;
     }
-    return 0;
+    // 에러 발생시 return -1, 아닐 시 return 0
+    if(error_check!=0) return -1;
+    else return 0;
 }
 
 int pid_process(int pid, int value[]){
@@ -79,3 +79,4 @@ int pid_process(int pid, int value[]){
         return 0;
     }
 }
+

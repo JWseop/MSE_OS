@@ -1,10 +1,3 @@
-//
-//  func.h
-//  ㅇㅇ
-//
-//  Created by 정우섭 on 2022/10/10.
-//
-
 #ifndef __FUNC_H
 #define __FUNC_H
 
@@ -18,7 +11,8 @@
 int child_process(int x, int y, int interval);
 void parent_process(int child_process_result);
 
-int Input_Error_identifier(int argc, int value[]);
+int Input_Error_identifier(int argc, char* argv[]);
+int Input_Error_identifier2(int value[]);
 int pid_process(int pid, int value[]);
 
 #endif /* __FUNC_H */
